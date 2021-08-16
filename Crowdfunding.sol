@@ -47,7 +47,9 @@ contract Crowdfunding {
         for(uint i=0; i < projectArray.length; i++) {
             if(projectArray[i].creator == msg.sender) {
                 if(projectArray[i].donatedAmount > 0) {
+                    delete projectArray[i];
                     returnFunds();
+                    break;
                 } 
                 delete projectArray[i];
             }
@@ -94,6 +96,7 @@ contract Crowdfunding {
                 address payable creator = projectArray[i].creator;
                 creator.transfer(projectArray[i].donatedAmount);
                 delete projectArray[i];
+                break;
             }
         }
     }
