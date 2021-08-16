@@ -69,6 +69,7 @@ contract Crowdfunding {
         for(uint i=0; i < projectArray.length; i++) {
             if(projectArray[i].creator == _pOwner) {
                 projectArray[i].donatedAmount += msg.value;
+                break;
             }
         }
 
