@@ -48,10 +48,8 @@ contract Crowdfunding {
             if(projectArray[i].creator == msg.sender) {
                 if(projectArray[i].donatedAmount > 0) {
                     returnFunds();
-                    delete projectArray[i];
-                } else {
-                    delete projectArray[i];
-                }
+                } 
+                delete projectArray[i];
             }
         }
     }
