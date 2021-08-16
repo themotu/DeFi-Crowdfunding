@@ -61,13 +61,12 @@ contract Crowdfunding {
     // up for withdrawal.
     function fundProject(address _pOwner) external payable {
         uint ethBalance = msg.sender.balance;
-        require(ethBalance >= msg.value);
-        
-        balances[address(this)] += msg.value; 
-        funderArray.push(Funder(msg.sender, msg.value));
+        require(ethBalance >= msg.value);  
 
         for(uint i=0; i < projectArray.length; i++) {
             if(projectArray[i].creator == _pOwner) {
+                balances[address(this)] += msg.value; 
+                funderArray.push(Funder(msg.sender, msg.value));
                 projectArray[i].donatedAmount += msg.value;
                 break;
             }
